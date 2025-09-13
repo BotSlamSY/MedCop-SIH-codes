@@ -45,8 +45,7 @@ app.add_middleware(
 TWILIO_SID = os.getenv("TWILIO_SID")
 TWILIO_TOKEN = os.getenv("TWILIO_TOKEN")
 TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_SANDBOX")
-OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
-NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+
 
 # Initialize services
 client = Client(TWILIO_SID, TWILIO_TOKEN) if TWILIO_SID and TWILIO_TOKEN else None
@@ -406,12 +405,7 @@ async def process_enhanced_query(query: str, intent: str, parameters: Dict, sess
     
     elif intent == "vaccination.query" or any(word in query.lower() for word in ["vaccin", "टीका", "immuniz"]):
         response = await handle_vaccination_query_enhanced(parameters)
-    
-    elif intent == "emergency.query" or any(word in query.lower() for word in ["emergency", "आपातकाल", "urgent"]):
-        response = await handle_emergency_query_enhanced(parameters)
-    
-    elif intent == "health.data.query" or any(word in query.lower() for word in ["data", "statistics", "आंकड़े"]):
-        response = await handle_health_data_query_enhanced(parameters)
+
     
     else:
         # Use ML-based matching for unrecognized intents
