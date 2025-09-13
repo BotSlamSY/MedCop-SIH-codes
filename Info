@@ -1,0 +1,2 @@
+Currently the chatbot model supports only 4 diseases i.e dengue, malaria, typhoid and covid.
+More diseases can be implemented using APIs.
